@@ -12,14 +12,14 @@ describe("issueDetailBreadcrumb", () => {
     const state = createIssueDetailLocationState("Inbox", "/inbox/mine", "inbox");
 
     expect(readIssueDetailBreadcrumb(state, "?from=issues")).toEqual({
-      label: "Inbox",
+      label: "Caixa de entrada",
       href: "/inbox/mine",
     });
   });
 
   it("falls back to the source query param when route state is unavailable", () => {
     expect(readIssueDetailBreadcrumb(null, "?from=inbox")).toEqual({
-      label: "Inbox",
+      label: "Caixa de entrada",
       href: "/inbox",
     });
   });
@@ -42,7 +42,7 @@ describe("issueDetailBreadcrumb", () => {
     expect(
       readIssueDetailBreadcrumb(null, "?from=inbox&fromHref=%2FPAP%2Finbox%2Funread"),
     ).toEqual({
-      label: "Inbox",
+      label: "Caixa de entrada",
       href: "/PAP/inbox/unread",
     });
   });

@@ -13,7 +13,7 @@ export function InstanceExperimentalSettings() {
 
   useEffect(() => {
     setBreadcrumbs([
-      { label: "Instance Settings" },
+      { label: "Configurações da Instância" },
       { label: "Experimental" },
     ]);
   }, [setBreadcrumbs]);
@@ -34,12 +34,12 @@ export function InstanceExperimentalSettings() {
       ]);
     },
     onError: (error) => {
-      setActionError(error instanceof Error ? error.message : "Failed to update experimental settings.");
+      setActionError(error instanceof Error ? error.message : "Falha ao atualizar configurações experimentais.");
     },
   });
 
   if (experimentalQuery.isLoading) {
-    return <div className="text-sm text-muted-foreground">Loading experimental settings...</div>;
+    return <div className="text-sm text-muted-foreground">Carregando configurações experimentais...</div>;
   }
 
   if (experimentalQuery.error) {
@@ -47,7 +47,7 @@ export function InstanceExperimentalSettings() {
       <div className="text-sm text-destructive">
         {experimentalQuery.error instanceof Error
           ? experimentalQuery.error.message
-          : "Failed to load experimental settings."}
+          : "Falha ao carregar configurações experimentais."}
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function InstanceExperimentalSettings() {
           <h1 className="text-lg font-semibold">Experimental</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Opt into features that are still being evaluated before they become default behavior.
+          Opte por recursos que ainda estão sendo avaliados antes de se tornarem comportamento padrão.
         </p>
       </div>
 
@@ -76,17 +76,17 @@ export function InstanceExperimentalSettings() {
       <section className="rounded-xl border border-border bg-card p-5">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-1.5">
-            <h2 className="text-sm font-semibold">Enable Isolated Workspaces</h2>
+            <h2 className="text-sm font-semibold">Ativar Áreas de Trabalho Isoladas</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Show execution workspace controls in project configuration and allow isolated workspace behavior for new
-              and existing issue runs.
+              Mostrar controles de área de trabalho de execução na configuração do projeto e permitir comportamento de área de trabalho isolada para
+              execuções de issues novas e existentes.
             </p>
           </div>
           <ToggleSwitch
             checked={enableIsolatedWorkspaces}
             onCheckedChange={() => toggleMutation.mutate({ enableIsolatedWorkspaces: !enableIsolatedWorkspaces })}
             disabled={toggleMutation.isPending}
-            aria-label="Toggle isolated workspaces experimental setting"
+            aria-label="Alternar configuração experimental de áreas de trabalho isoladas"
           />
         </div>
       </section>
@@ -94,17 +94,17 @@ export function InstanceExperimentalSettings() {
       <section className="rounded-xl border border-border bg-card p-5">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-1.5">
-            <h2 className="text-sm font-semibold">Auto-Restart Dev Server When Idle</h2>
+            <h2 className="text-sm font-semibold">Reiniciar Servidor Dev Automaticamente Quando Ocioso</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              In `pnpm dev:once`, wait for all queued and running local agent runs to finish, then restart the server
-              automatically when backend changes or migrations make the current boot stale.
+              No `pnpm dev:once`, aguardar que todas as execuções de agentes locais em fila e em andamento terminem, depois reiniciar o servidor
+              automaticamente quando mudanças no backend ou migrações tornarem o boot atual obsoleto.
             </p>
           </div>
           <ToggleSwitch
             checked={autoRestartDevServerWhenIdle}
             onCheckedChange={() => toggleMutation.mutate({ autoRestartDevServerWhenIdle: !autoRestartDevServerWhenIdle })}
             disabled={toggleMutation.isPending}
-            aria-label="Toggle guarded dev-server auto-restart"
+            aria-label="Alternar reinício automático do servidor dev"
           />
         </div>
       </section>

@@ -11,7 +11,7 @@ import { LocalWorkspaceRuntimeFields } from "../local-workspace-runtime-fields";
 const inputClass =
   "w-full rounded-md border border-border px-2.5 py-1.5 bg-transparent outline-none text-sm font-mono placeholder:text-muted-foreground/40";
 const instructionsFileHint =
-  "Absolute path to a markdown file (e.g. AGENTS.md) that defines this agent's behavior. Injected into the system prompt at runtime. Note: Codex may still auto-apply repo-scoped AGENTS.md files from the workspace.";
+  "Caminho absoluto para um arquivo markdown (ex: AGENTS.md) que define o comportamento deste agente. Injetado no prompt do sistema em tempo de execução. Nota: o Codex pode ainda aplicar automaticamente arquivos AGENTS.md do repositório no workspace.";
 
 export function CodexLocalConfigFields({
   mode,
@@ -31,7 +31,7 @@ export function CodexLocalConfigFields({
   return (
     <>
       {!hideInstructionsFile && (
-        <Field label="Agent instructions file" hint={instructionsFileHint}>
+        <Field label="Arquivo de instruções do agente" hint={instructionsFileHint}>
           <div className="flex items-center gap-2">
             <DraftInput
               value={
@@ -57,7 +57,7 @@ export function CodexLocalConfigFields({
         </Field>
       )}
       <ToggleField
-        label="Bypass sandbox"
+        label="Ignorar sandbox"
         hint={help.dangerouslyBypassSandbox}
         checked={
           isCreate
@@ -75,7 +75,7 @@ export function CodexLocalConfigFields({
         }
       />
       <ToggleField
-        label="Enable search"
+        label="Habilitar busca"
         hint={help.search}
         checked={
           isCreate

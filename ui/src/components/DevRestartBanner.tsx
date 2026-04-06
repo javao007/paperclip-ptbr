@@ -7,7 +7,7 @@ function formatRelativeTimestamp(value: string | null): string | null {
   if (Number.isNaN(timestamp)) return null;
 
   const deltaMs = Date.now() - timestamp;
-  if (deltaMs < 60_000) return "just now";
+  if (deltaMs < 60_000) return "agora mesmo";
   const deltaMinutes = Math.round(deltaMs / 60_000);
   if (deltaMinutes < 60) return `${deltaMinutes}m ago`;
   const deltaHours = Math.round(deltaMinutes / 60);
@@ -18,12 +18,12 @@ function formatRelativeTimestamp(value: string | null): string | null {
 
 function describeReason(devServer: DevServerHealthStatus): string {
   if (devServer.reason === "backend_changes_and_pending_migrations") {
-    return "backend files changed and migrations are pending";
+    return "arquivos do backend foram alterados e migrações estão pendentes";
   }
   if (devServer.reason === "pending_migrations") {
-    return "pending migrations need a fresh boot";
+    return "migrações pendentes precisam de uma reinicialização";
   }
-  return "backend files changed since this server booted";
+  return "arquivos do backend foram alterados desde que este servidor iniciou";
 }
 
 export function DevRestartBanner({ devServer }: { devServer?: DevServerHealthStatus }) {
@@ -38,28 +38,28 @@ export function DevRestartBanner({ devServer }: { devServer?: DevServerHealthSta
         <div className="min-w-0">
           <div className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em]">
             <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
-            <span>Restart Required</span>
+            <span>Reinicialização Necessária</span>
             {devServer.autoRestartEnabled ? (
               <span className="rounded-full bg-amber-900/10 px-2 py-0.5 text-[10px] tracking-[0.14em] dark:bg-amber-100/10">
-                Auto-Restart On
+                Auto-Reinicialização Ligada
               </span>
             ) : null}
           </div>
           <p className="mt-1 text-sm">
             {describeReason(devServer)}
-            {changedAt ? ` · updated ${changedAt}` : ""}
+            {changedAt ? ` · atualizado ${changedAt}` : ""}
           </p>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-amber-900/80 dark:text-amber-100/75">
             {sample.length > 0 ? (
               <span>
-                Changed: {sample.join(", ")}
-                {devServer.changedPathCount > sample.length ? ` +${devServer.changedPathCount - sample.length} more` : ""}
+                Alterados: {sample.join(", ")}
+                {devServer.changedPathCount > sample.length ? ` +${devServer.changedPathCount - sample.length} mais` : ""}
               </span>
             ) : null}
             {devServer.pendingMigrations.length > 0 ? (
               <span>
-                Pending migrations: {devServer.pendingMigrations.slice(0, 2).join(", ")}
-                {devServer.pendingMigrations.length > 2 ? ` +${devServer.pendingMigrations.length - 2} more` : ""}
+                Migrações pendentes: {devServer.pendingMigrations.slice(0, 2).join(", ")}
+                {devServer.pendingMigrations.length > 2 ? ` +${devServer.pendingMigrations.length - 2} mais` : ""}
               </span>
             ) : null}
           </div>
@@ -69,17 +69,17 @@ export function DevRestartBanner({ devServer }: { devServer?: DevServerHealthSta
           {devServer.waitingForIdle ? (
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-900/10 px-3 py-1.5 dark:bg-amber-100/10">
               <TimerReset className="h-3.5 w-3.5" />
-              <span>Waiting for {devServer.activeRunCount} live run{devServer.activeRunCount === 1 ? "" : "s"} to finish</span>
+              <span>Aguardando {devServer.activeRunCount} execução{devServer.activeRunCount === 1 ? "" : "ões"} ativa{devServer.activeRunCount === 1 ? "" : "s"} terminar</span>
             </div>
           ) : devServer.autoRestartEnabled ? (
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-900/10 px-3 py-1.5 dark:bg-amber-100/10">
               <RotateCcw className="h-3.5 w-3.5" />
-              <span>Auto-restart will trigger when the instance is idle</span>
+              <span>A reinicialização automática será acionada quando a instância estiver ociosa</span>
             </div>
           ) : (
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-900/10 px-3 py-1.5 dark:bg-amber-100/10">
               <RotateCcw className="h-3.5 w-3.5" />
-              <span>Restart <code>pnpm dev:once</code> after the active work is safe to interrupt</span>
+              <span>Reinicie <code>pnpm dev:once</code> quando o trabalho ativo puder ser interrompido com segurança</span>
             </div>
           )}
         </div>

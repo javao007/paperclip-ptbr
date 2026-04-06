@@ -74,7 +74,7 @@ export function ImageGalleryModal({
           {/* Top bar */}
           <div className="flex items-center justify-between px-5 py-3 text-white/80 text-sm shrink-0">
             <span className="truncate max-w-[50%] font-medium" title={current.originalFilename ?? undefined}>
-              {current.originalFilename ?? "Image"}
+              {current.originalFilename ?? "Imagem"}
             </span>
             <div className="flex items-center gap-4">
               <span className="text-white/40 tabular-nums text-xs">
@@ -84,7 +84,7 @@ export function ImageGalleryModal({
                 href={current.contentPath}
                 download={current.originalFilename ?? "image"}
                 className="text-white/50 hover:text-white transition-colors"
-                title="Download"
+                title="Baixar"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Download className="h-4.5 w-4.5" />
@@ -93,7 +93,7 @@ export function ImageGalleryModal({
                 type="button"
                 onClick={() => onOpenChange(false)}
                 className="text-white/50 hover:text-white transition-colors"
-                title="Close"
+                title="Fechar"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -109,7 +109,7 @@ export function ImageGalleryModal({
                   type="button"
                   onClick={goPrev}
                   className="rounded-full bg-white/10 p-3 text-white/60 hover:text-white hover:bg-white/20 transition-colors"
-                  title="Previous"
+                  title="Anterior"
                 >
                   <ChevronLeft className="h-7 w-7" />
                 </button>
@@ -134,7 +134,7 @@ export function ImageGalleryModal({
                   type="button"
                   onClick={goNext}
                   className="rounded-full bg-white/10 p-3 text-white/60 hover:text-white hover:bg-white/20 transition-colors"
-                  title="Next"
+                  title="Próximo"
                 >
                   <ChevronRight className="h-7 w-7" />
                 </button>

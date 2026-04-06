@@ -192,21 +192,21 @@ export function DesignGuide() {
     <div className="space-y-10 max-w-4xl">
       {/* Page header */}
       <div>
-        <h2 className="text-xl font-bold">Design Guide</h2>
+        <h2 className="text-xl font-bold">Guia de Design</h2>
         <p className="text-sm text-muted-foreground mt-1">
-          Every component, style, and pattern used across Paperclip.
+          Cada componente, estilo e padrão usado no Paperclip.
         </p>
       </div>
 
       {/* ============================================================ */}
       {/*  COVERAGE                                                     */}
       {/* ============================================================ */}
-      <Section title="Component Coverage">
+      <Section title="Cobertura de Componentes">
         <p className="text-sm text-muted-foreground">
-          This page should be updated when new UI primitives or app-level patterns ship.
+          Esta página deve ser atualizada quando novos primitivos de UI ou padrões no nível do aplicativo forem lançados.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
-          <SubSection title="UI primitives">
+          <SubSection title="Primitivos de UI">
             <div className="flex flex-wrap gap-2">
               {[
                 "avatar", "badge", "breadcrumb", "button", "card", "checkbox", "collapsible",
@@ -219,7 +219,7 @@ export function DesignGuide() {
               ))}
             </div>
           </SubSection>
-          <SubSection title="App components">
+          <SubSection title="Componentes do aplicativo">
             <div className="flex flex-wrap gap-2">
               {[
                 "StatusBadge", "StatusIcon", "PriorityIcon", "EntityRow", "EmptyState", "MetricCard",
@@ -238,7 +238,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  COLORS                                                       */}
       {/* ============================================================ */}
-      <Section title="Colors">
+      <Section title="Cores">
         <SubSection title="Core">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <Swatch name="Background" cssVar="--background" />
@@ -277,7 +277,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  TYPOGRAPHY                                                   */}
       {/* ============================================================ */}
-      <Section title="Typography">
+      <Section title="Tipografia">
         <div className="space-y-3">
           <h2 className="text-xl font-bold">Page Title — text-xl font-bold</h2>
           <h2 className="text-lg font-semibold">Section Title — text-lg font-semibold</h2>
@@ -327,8 +327,8 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  BUTTONS                                                      */}
       {/* ============================================================ */}
-      <Section title="Buttons">
-        <SubSection title="Variants">
+      <Section title="Botões">
+        <SubSection title="Variantes">
           <div className="flex items-center gap-2 flex-wrap">
             <Button variant="default">Default</Button>
             <Button variant="secondary">Secondary</Button>
@@ -339,7 +339,7 @@ export function DesignGuide() {
           </div>
         </SubSection>
 
-        <SubSection title="Sizes">
+        <SubSection title="Tamanhos">
           <div className="flex items-center gap-2 flex-wrap">
             <Button size="xs">Extra Small</Button>
             <Button size="sm">Small</Button>
@@ -348,7 +348,7 @@ export function DesignGuide() {
           </div>
         </SubSection>
 
-        <SubSection title="Icon buttons">
+        <SubSection title="Botões com ícone">
           <div className="flex items-center gap-2 flex-wrap">
             <Button variant="ghost" size="icon-xs"><Search /></Button>
             <Button variant="ghost" size="icon-sm"><Search /></Button>
@@ -357,7 +357,7 @@ export function DesignGuide() {
           </div>
         </SubSection>
 
-        <SubSection title="With icons">
+        <SubSection title="Com ícones">
           <div className="flex items-center gap-2 flex-wrap">
             <Button><Plus /> New Issue</Button>
             <Button variant="outline"><Upload /> Upload</Button>
@@ -366,7 +366,7 @@ export function DesignGuide() {
           </div>
         </SubSection>
 
-        <SubSection title="States">
+        <SubSection title="Estados">
           <div className="flex items-center gap-2 flex-wrap">
             <Button disabled>Disabled</Button>
             <Button variant="outline" disabled>Disabled Outline</Button>
@@ -378,7 +378,7 @@ export function DesignGuide() {
       {/*  BADGES                                                       */}
       {/* ============================================================ */}
       <Section title="Badges">
-        <SubSection title="Variants">
+        <SubSection title="Variantes">
           <div className="flex items-center gap-2 flex-wrap">
             <Badge variant="default">Default</Badge>
             <Badge variant="secondary">Secondary</Badge>
@@ -392,7 +392,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  STATUS BADGES & ICONS                                        */}
       {/* ============================================================ */}
-      <Section title="Status System">
+      <Section title="Sistema de Status">
         <SubSection title="StatusBadge (all statuses)">
           <div className="flex items-center gap-2 flex-wrap">
             {[
@@ -471,7 +471,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  FORM ELEMENTS                                                */}
       {/* ============================================================ */}
-      <Section title="Form Elements">
+      <Section title="Elementos de Formulário">
         <div className="grid gap-6 md:grid-cols-2">
           <SubSection title="Input">
             <Input placeholder="Default input" />
@@ -826,7 +826,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  ENTITY ROWS                                                  */}
       {/* ============================================================ */}
-      <Section title="Entity Rows">
+      <Section title="Linhas de Entidade">
         <div className="border border-border rounded-md">
           <EntityRow
             leading={
@@ -885,7 +885,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  FILTER BAR                                                   */}
       {/* ============================================================ */}
-      <Section title="Filter Bar">
+      <Section title="Barra de Filtros">
         <FilterBar
           filters={filters}
           onRemove={(key) => setFilters((f) => f.filter((x) => x.key !== key))}
@@ -902,7 +902,7 @@ export function DesignGuide() {
               ])
             }
           >
-            Reset filters
+            Resetar filtros
           </Button>
         )}
       </Section>
@@ -911,7 +911,7 @@ export function DesignGuide() {
       {/*  AVATARS                                                      */}
       {/* ============================================================ */}
       <Section title="Avatars">
-        <SubSection title="Sizes">
+        <SubSection title="Tamanhos">
           <div className="flex items-center gap-3">
             <Avatar size="sm"><AvatarFallback>SM</AvatarFallback></Avatar>
             <Avatar><AvatarFallback>DF</AvatarFallback></Avatar>
@@ -933,7 +933,7 @@ export function DesignGuide() {
       {/*  IDENTITY                                                     */}
       {/* ============================================================ */}
       <Section title="Identity">
-        <SubSection title="Sizes">
+        <SubSection title="Tamanhos">
           <div className="flex items-center gap-6">
             <Identity name="Agent Alpha" size="sm" />
             <Identity name="Agent Alpha" />
@@ -1010,12 +1010,12 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  EMPTY STATE                                                  */}
       {/* ============================================================ */}
-      <Section title="Empty State">
+      <Section title="Estado Vazio">
         <div className="border border-border rounded-md">
           <EmptyState
             icon={Inbox}
-            message="No items to show. Create your first one to get started."
-            action="Create Item"
+            message="Nenhum item para exibir. Crie o primeiro para começar."
+            action="Criar Item"
             onAction={() => {}}
           />
         </div>
@@ -1024,7 +1024,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  PROGRESS BARS                                                */}
       {/* ============================================================ */}
-      <Section title="Progress Bars (Budget)">
+      <Section title="Barras de Progresso (Orçamento)">
         <div className="space-y-3">
           {[
             { label: "Under budget (40%)", pct: 40, color: "bg-green-400" },
@@ -1050,7 +1050,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  LOG VIEWER                                                   */}
       {/* ============================================================ */}
-      <Section title="Log Viewer">
+      <Section title="Visualizador de Logs">
         <div className="bg-neutral-950 rounded-lg p-3 font-mono text-xs max-h-80 overflow-y-auto">
           <div className="text-foreground">[12:00:01] INFO  Agent started successfully</div>
           <div className="text-foreground">[12:00:02] INFO  Processing task PAP-001</div>
@@ -1072,7 +1072,7 @@ export function DesignGuide() {
       {/* ============================================================ */}
       {/*  PROPERTY ROW PATTERN                                         */}
       {/* ============================================================ */}
-      <Section title="Property Row Pattern">
+      <Section title="Padrão de Linha de Propriedade">
         <div className="border border-border rounded-md p-4 space-y-1 max-w-sm">
           <div className="flex items-center justify-between py-1.5">
             <span className="text-xs text-muted-foreground">Status</span>

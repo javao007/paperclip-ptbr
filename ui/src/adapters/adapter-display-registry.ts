@@ -54,57 +54,57 @@ export interface AdapterDisplayInfo {
 const adapterDisplayMap: Record<string, AdapterDisplayInfo> = {
   claude_local: {
     label: "Claude Code",
-    description: "Local Claude agent",
+    description: "Agente Claude local",
     icon: Sparkles,
     recommended: true,
   },
   codex_local: {
     label: "Codex",
-    description: "Local Codex agent",
+    description: "Agente Codex local",
     icon: Code,
     recommended: true,
   },
   gemini_local: {
     label: "Gemini CLI",
-    description: "Local Gemini agent",
+    description: "Agente Gemini local",
     icon: Gem,
   },
   opencode_local: {
     label: "OpenCode",
-    description: "Local multi-provider agent",
+    description: "Agente local multi-provedor",
     icon: OpenCodeLogoIcon,
   },
   hermes_local: {
     label: "Hermes Agent",
-    description: "Local Hermes CLI agent",
+    description: "Agente Hermes CLI local",
     icon: HermesIcon,
   },
   pi_local: {
     label: "Pi",
-    description: "Local Pi agent",
+    description: "Agente Pi local",
     icon: Terminal,
   },
   cursor: {
     label: "Cursor",
-    description: "Local Cursor agent",
+    description: "Agente Cursor local",
     icon: MousePointer2,
   },
   openclaw_gateway: {
     label: "OpenClaw Gateway",
-    description: "Invoke OpenClaw via gateway protocol",
+    description: "Invocar OpenClaw via protocolo gateway",
     icon: Bot,
     comingSoon: true,
-    disabledLabel: "Configure OpenClaw within the App",
+    disabledLabel: "Configure o OpenClaw dentro do App",
   },
   process: {
     label: "Process",
-    description: "Internal process adapter",
+    description: "Adaptador de processo interno",
     icon: Cpu,
     comingSoon: true,
   },
   http: {
     label: "HTTP",
-    description: "Internal HTTP adapter",
+    description: "Adaptador HTTP interno",
     icon: Cpu,
     comingSoon: true,
   },
@@ -147,7 +147,7 @@ export function getAdapterDisplay(type: string): AdapterDisplayInfo {
   const label = withSuffix(humanizeType(type), suffix);
   return {
     label,
-    description: suffix ? `External ${suffix} adapter` : "External adapter",
+    description: suffix ? `Adaptador ${suffix} externo` : "Adaptador externo",
     icon: Cpu,
   };
 }
