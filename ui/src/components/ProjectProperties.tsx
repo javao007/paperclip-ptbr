@@ -3,7 +3,7 @@ import { Link } from "@/lib/router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Project } from "@paperclipai/shared";
 import { StatusBadge } from "./StatusBadge";
-import { runtimeStatusLabels, t } from "../lib/translations";
+import { runtimeStatusLabels, t, translateStatus } from "../lib/translations";
 import { cn, formatDate } from "../lib/utils";
 import { goalsApi } from "../api/goals";
 import { instanceSettingsApi } from "../api/instanceSettings";
@@ -129,7 +129,7 @@ function ProjectStatusPicker({ status, onChange }: { status: string; onChange: (
             colorClass,
           )}
         >
-          {status.replace("_", " ")}
+          {t(status, runtimeStatusLabels)}
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-40 p-1" align="start">
@@ -480,7 +480,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
               onCommit={(name) => commitField("name", { name })}
               immediate
               className="w-full rounded border border-border bg-transparent px-2 py-1 text-sm outline-none"
-              placeholder="Project name"
+              placeholder="Nome do projeto"
             />
           ) : (
             <span className="text-sm">{project.name}</span>
@@ -497,7 +497,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
               onSave={(description) => commitField("description", { description })}
               as="p"
               className="text-sm text-muted-foreground"
-              placeholder="Add a description..."
+              placeholder="Adicione uma descrição..."
               multiline
             />
           ) : (
@@ -607,7 +607,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                 <button
                   type="button"
                   className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-border text-[10px] text-muted-foreground hover:text-foreground"
-                  aria-label="Codebase help"
+                  aria-label="Ajuda do código"
                 >
                   ?
                 </button>
@@ -656,7 +656,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                       variant="ghost"
                       size="icon-xs"
                       onClick={clearRepoWorkspace}
-                      aria-label="Clear repo"
+                      aria-label="Limpar repositório"
                     >
                       <Trash2 className="h-3 w-3" />
                     </Button>
@@ -710,7 +710,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                       variant="ghost"
                       size="icon-xs"
                       onClick={clearLocalWorkspace}
-                      aria-label="Clear local folder"
+                      aria-label="Limpar pasta local"
                     >
                       <Trash2 className="h-3 w-3" />
                     </Button>
@@ -866,7 +866,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                     <button
                       type="button"
                       className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-border text-[10px] text-muted-foreground hover:text-foreground"
-                      aria-label="Execution workspaces help"
+                      aria-label="Ajuda das áreas de trabalho"
                     >
                       ?
                     </button>
@@ -898,7 +898,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                     />
                   ) : (
                     <span className="text-xs text-muted-foreground">
-                      {executionWorkspacesEnabled ? "Enabled" : "Disabled"}
+                      {executionWorkspacesEnabled ? "Ativado" : "Desativado"}
                     </span>
                   )}
                 </div>

@@ -98,7 +98,7 @@ export function CompanySettings() {
     onError: (err) => {
       pushToast({
         title: "Falha ao atualizar compartilhamento de feedback",
-        body: err instanceof Error ? err.message : "Unknown error",
+        body: err instanceof Error ? err.message : "Erro desconhecido",
         tone: "error",
       });
     },

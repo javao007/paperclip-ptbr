@@ -10,6 +10,7 @@ import { useToast } from "./ToastContext";
 import { queryKeys } from "../lib/queryKeys";
 import { toCompanyRelativePath } from "../lib/company-routes";
 import { useLocation } from "../lib/router";
+import { translateStatus } from "../lib/translations";
 
 const TOAST_COOLDOWN_WINDOW_MS = 10_000;
 const TOAST_COOLDOWN_MAX = 3;
@@ -261,7 +262,7 @@ const RUN_TOAST_STATUSES = new Set(["failed", "timed_out", "cancelled"]);
 function describeIssueUpdate(details: Record<string, unknown> | null): string | null {
   if (!details) return null;
   const changes: string[] = [];
-  if (typeof details.status === "string") changes.push(`status -> ${details.status.replace(/_/g, " ")}`);
+  if (typeof details.status === "string") changes.push(`status → ${translateStatus(details.status)}`);
   if (typeof details.priority === "string") changes.push(`prioridade -> ${details.priority}`);
   if (typeof details.assigneeAgentId === "string" || typeof details.assigneeUserId === "string") {
     changes.push("reatribuído");
@@ -270,7 +271,7 @@ function describeIssueUpdate(details: Record<string, unknown> | null): string | 
   }
   if (details.reopened === true) {
     const from = readString(details.reopenedFrom);
-    changes.push(from ? `reaberto de ${from.replace(/_/g, " ")}` : "reaberto");
+    changes.push(from ? `reaberto de ${translateStatus(from)}` : "reaberto");
   }
   if (typeof details.title === "string") changes.push("título alterado");
   if (typeof details.description === "string") changes.push("descrição alterada");
@@ -341,7 +342,7 @@ function buildActivityToast(
   const reopenedFrom = readString(details?.reopenedFrom);
   const reopenedLabel = reopened
     ? reopenedFrom
-      ? `reaberto de ${reopenedFrom.replace(/_/g, " ")}`
+      ? `reaberto de ${translateStatus(reopenedFrom)}`
       : "reaberto"
     : null;
   const title = reopened

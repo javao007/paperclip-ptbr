@@ -46,7 +46,7 @@ import { StatusIcon } from "../components/StatusIcon";
 import { PriorityIcon } from "../components/PriorityIcon";
 import { StatusBadge } from "../components/StatusBadge";
 import { Identity } from "../components/Identity";
-import { issueStatusLabels, priorityLabels } from "../lib/translations";
+import { issueStatusLabels, priorityLabels, translateStatus, approvalTypeLabels, t } from "../lib/translations";
 import { PluginSlotMount, PluginSlotOutlet, usePluginSlots } from "@/plugins/slots";
 import { PluginLauncherOutlet } from "@/plugins/launchers";
 import { Separator } from "@/components/ui/separator";
@@ -121,7 +121,7 @@ const FEEDBACK_TERMS_URL = import.meta.env.VITE_FEEDBACK_TERMS_URL?.trim() || "h
 
 function humanizeValue(value: unknown): string {
   if (typeof value !== "string") return String(value ?? "nenhum");
-  return issueStatusLabels[value] ?? priorityLabels[value] ?? value.replace(/_/g, " ");
+  return issueStatusLabels[value] ?? priorityLabels[value] ?? translateStatus(value);
 }
 
 function asRecord(value: unknown): Record<string, unknown> | null {
@@ -1679,7 +1679,7 @@ export function IssueDetail() {
                   <div className="flex items-center gap-2">
                     <StatusBadge status={approval.status} />
                     <span className="font-medium">
-                      {approval.type.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                      {t(approval.type, approvalTypeLabels)}
                     </span>
                     <span className="font-mono text-muted-foreground">{approval.id.slice(0, 8)}</span>
                   </div>

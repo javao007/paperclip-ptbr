@@ -197,7 +197,7 @@ function MonoValue({ value, copy }: { value: string; copy?: boolean }) {
     <div className="inline-flex max-w-full items-start gap-2">
       <span className="break-all font-mono text-xs">{value}</span>
       {copy ? (
-        <CopyText text={value} className="shrink-0 text-muted-foreground hover:text-foreground" copiedLabel="Copied">
+        <CopyText text={value} className="shrink-0 text-muted-foreground hover:text-foreground" copiedLabel="Copiado!">
           <Copy className="h-3.5 w-3.5" />
         </CopyText>
       ) : null}
@@ -318,7 +318,7 @@ export function ExecutionWorkspaceDetail() {
       setErrorMessage(null);
     },
     onError: (error) => {
-      setErrorMessage(error instanceof Error ? error.message : "Failed to save execution workspace.");
+      setErrorMessage(error instanceof Error ? error.message : "Falha ao salvar área de trabalho.");
     },
   });
   const workspaceOperationsQuery = useQuery({
@@ -344,7 +344,7 @@ export function ExecutionWorkspaceDetail() {
     },
     onError: (error) => {
       setRuntimeActionMessage(null);
-      setErrorMessage(error instanceof Error ? error.message : "Failed to control runtime services.");
+      setErrorMessage(error instanceof Error ? error.message : "Falha ao controlar serviços de runtime.");
     },
   });
 
@@ -369,7 +369,7 @@ export function ExecutionWorkspaceDetail() {
     try {
       patch = buildWorkspacePatch(initialState, form);
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Failed to build workspace update.");
+      setErrorMessage(error instanceof Error ? error.message : "Falha ao construir atualização.");
       return;
     }
 
@@ -652,7 +652,7 @@ export function ExecutionWorkspaceDetail() {
                       {workspace.repoUrl}
                       <ExternalLink className="h-3.5 w-3.5 shrink-0" />
                     </a>
-                    <CopyText text={workspace.repoUrl} className="shrink-0 text-muted-foreground hover:text-foreground" copiedLabel="Copied">
+                    <CopyText text={workspace.repoUrl} className="shrink-0 text-muted-foreground hover:text-foreground" copiedLabel="Copiado!">
                       <Copy className="h-3.5 w-3.5" />
                     </CopyText>
                   </div>
@@ -817,7 +817,7 @@ export function ExecutionWorkspaceDetail() {
             <p className="text-sm text-destructive">
               {linkedIssuesQuery.error instanceof Error
                 ? linkedIssuesQuery.error.message
-                : "Failed to load linked issues."}
+                : "Falha ao carregar tarefas vinculadas."}
             </p>
           ) : linkedIssues.length > 0 ? (
             <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-1">

@@ -157,7 +157,7 @@ export function RoutineVariablesEditor({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="__unset__">No default</SelectItem>
+                      <SelectItem value="__unset__">Sem padrão</SelectItem>
                       <SelectItem value="true">True</SelectItem>
                       <SelectItem value="false">False</SelectItem>
                     </SelectContent>
@@ -192,10 +192,10 @@ export function RoutineVariablesEditor({
                         })))}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="No default" />
+                          <SelectValue placeholder="Sem padrão" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="__unset__">No default</SelectItem>
+                          <SelectItem value="__unset__">Sem padrão</SelectItem>
                           {variable.options.map((option) => (
                             <SelectItem key={option} value={option}>{option}</SelectItem>
                           ))}

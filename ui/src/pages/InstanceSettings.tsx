@@ -103,7 +103,7 @@ export function InstanceSettings() {
       const failures = results.filter((result): result is PromiseRejectedResult => result.status === "rejected");
       if (failures.length > 0) {
         const firstError = failures[0]?.reason;
-        const detail = firstError instanceof Error ? firstError.message : "Unknown error";
+        const detail = firstError instanceof Error ? firstError.message : "Erro desconhecido";
         throw new Error(
           failures.length === 1
             ? `Failed to disable 1 timer heartbeat: ${detail}`

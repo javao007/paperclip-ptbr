@@ -95,6 +95,25 @@ export const authChallengeStatusLabels: Record<string, string> = {
   expired: "Expirado",
 };
 
+// Status de Metas (Goals)
+export const goalStatusLabels: Record<string, string> = {
+  active: "Ativo",
+  on_track: "No Caminho",
+  at_risk: "Em Risco",
+  off_track: "Fora do Caminho",
+  achieved: "Alcançado",
+  abandoned: "Abandonado",
+  closed: "Fechado",
+};
+
+// Tipos de Aprovação
+export const approvalTypeLabels: Record<string, string> = {
+  plan_review: "Revisão de Plano",
+  code_review: "Revisão de Código",
+  deployment: "Deploy",
+  general: "Geral",
+};
+
 // Tipos de Ação do Log de Atividade
 export const activityActionLabels: Record<string, string> = {
   "approval.created": "Aprovação criada",
@@ -158,6 +177,10 @@ export function translateStatus(status: string): string {
     issueStatusLabels[status] ??
     agentStatusLabels[status] ??
     runStatusLabels[status] ??
+    runtimeStatusLabels[status] ??
+    approvalStatusLabels[status] ??
+    routineRunStatusLabels[status] ??
+    goalStatusLabels[status] ??
     status
   );
 }

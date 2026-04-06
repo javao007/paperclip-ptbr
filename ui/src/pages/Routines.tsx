@@ -376,7 +376,7 @@ export function Routines() {
       setAdvancedOpen(false);
       await queryClient.invalidateQueries({ queryKey: queryKeys.routines.list(selectedCompanyId!) });
       pushToast({
-        title: "Routine created",
+        title: "Rotina criada",
         body: "Add the first trigger to turn it into a live workflow.",
         tone: "success",
       });
@@ -407,7 +407,7 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Failed to update routine",
+        title: "Falha ao atualizar rotina",
         body: mutationError instanceof Error ? mutationError.message : "Paperclip could not update the routine.",
         tone: "error",
       });
@@ -440,7 +440,7 @@ export function Routines() {
     },
     onError: (mutationError) => {
       pushToast({
-        title: "Routine run failed",
+        title: "Falha na execução da rotina",
         body: mutationError instanceof Error ? mutationError.message : "Paperclip could not start the routine run.",
         tone: "error",
       });
@@ -707,8 +707,8 @@ export function Routines() {
                     ref={assigneeSelectorRef}
                     value={draft.assigneeAgentId}
                     options={assigneeOptions}
-                    placeholder="Assignee"
-                    noneLabel="No assignee"
+                    placeholder="Responsável"
+                    noneLabel="Sem responsável"
                     searchPlaceholder="Search assignees..."
                     emptyMessage="No assignees found."
                     onChange={(assigneeAgentId) => {
@@ -733,7 +733,7 @@ export function Routines() {
                           <span className="truncate">{option.label}</span>
                         )
                       ) : (
-                        <span className="text-muted-foreground">Assignee</span>
+                        <span className="text-muted-foreground">Responsável</span>
                       )
                     }
                     renderOption={(option) => {

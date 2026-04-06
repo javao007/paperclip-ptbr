@@ -427,7 +427,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to save routine",
+        title: "Falha ao salvar rotina",
         body: error instanceof Error ? error.message : "Paperclip could not save the routine.",
         tone: "error",
       });
@@ -447,7 +447,7 @@ export function RoutineDetail() {
           : {}),
       }),
     onSuccess: async () => {
-      pushToast({ title: "Routine run started", tone: "success" });
+      pushToast({ title: "Execução de rotina iniciada", tone: "success" });
       setRunVariablesOpen(false);
       setActiveTab("runs");
       await Promise.all([
@@ -459,7 +459,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Routine run failed",
+        title: "Falha na execução da rotina",
         body: error instanceof Error ? error.message : "Paperclip could not start the routine run.",
         tone: "error",
       });
@@ -470,7 +470,7 @@ export function RoutineDetail() {
     mutationFn: (status: string) => routinesApi.update(routineId!, { status }),
     onSuccess: async (_data, status) => {
       pushToast({
-        title: "Routine saved",
+        title: "Rotina salva",
         body: status === "paused" ? "Automation paused." : "Automation enabled.",
         tone: "success",
       });
@@ -481,7 +481,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to update routine",
+        title: "Falha ao atualizar rotina",
         body: error instanceof Error ? error.message : "Paperclip could not update the routine.",
         tone: "error",
       });
@@ -509,13 +509,13 @@ export function RoutineDetail() {
     onSuccess: async (result) => {
       if (result.secretMaterial) {
         setSecretMessage({
-          title: "Webhook trigger created",
+          title: "Gatilho webhook criado",
           webhookUrl: result.secretMaterial.webhookUrl,
           webhookSecret: result.secretMaterial.webhookSecret,
         });
       } else {
         pushToast({
-          title: "Trigger added",
+          title: "Gatilho adicionado",
           body: "The routine schedule was saved.",
           tone: "success",
         });
@@ -528,7 +528,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to add trigger",
+        title: "Falha ao adicionar gatilho",
         body: error instanceof Error ? error.message : "Paperclip could not create the trigger.",
         tone: "error",
       });
@@ -539,7 +539,7 @@ export function RoutineDetail() {
     mutationFn: ({ id, patch }: { id: string; patch: Record<string, unknown> }) => routinesApi.updateTrigger(id, patch),
     onSuccess: async () => {
       pushToast({
-        title: "Trigger saved",
+        title: "Gatilho salvo",
         body: "The routine cadence update was saved.",
         tone: "success",
       });
@@ -551,7 +551,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to update trigger",
+        title: "Falha ao atualizar gatilho",
         body: error instanceof Error ? error.message : "Paperclip could not update the trigger.",
         tone: "error",
       });
@@ -562,7 +562,7 @@ export function RoutineDetail() {
     mutationFn: (id: string) => routinesApi.deleteTrigger(id),
     onSuccess: async () => {
       pushToast({
-        title: "Trigger deleted",
+        title: "Gatilho excluído",
         tone: "success",
       });
       await Promise.all([
@@ -573,7 +573,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to delete trigger",
+        title: "Falha ao excluir gatilho",
         body: error instanceof Error ? error.message : "Paperclip could not delete the trigger.",
         tone: "error",
       });
@@ -584,7 +584,7 @@ export function RoutineDetail() {
     mutationFn: (id: string): Promise<RotateRoutineTriggerResponse> => routinesApi.rotateTriggerSecret(id),
     onSuccess: async (result) => {
       setSecretMessage({
-        title: "Webhook secret rotated",
+        title: "Segredo do webhook rotacionado",
         webhookUrl: result.secretMaterial.webhookUrl,
         webhookSecret: result.secretMaterial.webhookSecret,
       });
@@ -595,7 +595,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to rotate webhook secret",
+        title: "Falha ao rotacionar segredo do webhook",
         body: error instanceof Error ? error.message : "Paperclip could not rotate the webhook secret.",
         tone: "error",
       });
@@ -758,8 +758,8 @@ export function RoutineDetail() {
             ref={assigneeSelectorRef}
             value={editDraft.assigneeAgentId}
             options={assigneeOptions}
-            placeholder="Assignee"
-            noneLabel="No assignee"
+            placeholder="Responsável"
+            noneLabel="Sem responsável"
             searchPlaceholder="Search assignees..."
             emptyMessage="No assignees found."
             onChange={(assigneeAgentId) => {
@@ -784,7 +784,7 @@ export function RoutineDetail() {
                   <span className="truncate">{option.label}</span>
                 )
               ) : (
-                <span className="text-muted-foreground">Assignee</span>
+                <span className="text-muted-foreground">Responsável</span>
               )
             }
             renderOption={(option) => {
@@ -803,8 +803,8 @@ export function RoutineDetail() {
             ref={projectSelectorRef}
             value={editDraft.projectId}
             options={projectOptions}
-            placeholder="Project"
-            noneLabel="No project"
+            placeholder="Projeto"
+            noneLabel="Sem projeto"
             searchPlaceholder="Search projects..."
             emptyMessage="No projects found."
             onChange={(projectId) => setEditDraft((current) => ({ ...current, projectId }))}
@@ -819,7 +819,7 @@ export function RoutineDetail() {
                   <span className="truncate">{option.label}</span>
                 </>
               ) : (
-                <span className="text-muted-foreground">Project</span>
+                <span className="text-muted-foreground">Projeto</span>
               )
             }
             renderOption={(option) => {

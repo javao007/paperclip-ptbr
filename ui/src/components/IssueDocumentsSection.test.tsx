@@ -288,11 +288,11 @@ describe("IssueDocumentsSection", () => {
       historicalRevisionButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
 
-    expect(container.textContent).toContain("Viewing revision 3");
+    expect(container.textContent).toContain("Visualizando revisão 3");
     expect(container.textContent).toContain("Restored plan body");
 
     const restoreButton = Array.from(container.querySelectorAll("button"))
-      .find((button) => button.textContent?.includes("Restore this revision"));
+      .find((button) => button.textContent?.includes("Restaurar esta revisão"));
     expect(restoreButton).toBeTruthy();
 
     await act(async () => {
@@ -301,7 +301,7 @@ describe("IssueDocumentsSection", () => {
 
     expect(mockIssuesApi.restoreDocumentRevision).toHaveBeenCalledWith("issue-1", "plan", "revision-3");
     expect(container.textContent).toContain("Restored plan body");
-    expect(container.textContent).not.toContain("Viewing revision 3");
+    expect(container.textContent).not.toContain("Visualizando revisão 3");
 
     pendingDocuments.resolve([restoredDocument]);
     await flush();

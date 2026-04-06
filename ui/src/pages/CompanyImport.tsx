@@ -804,8 +804,8 @@ export function CompanyImport() {
     onError: (err) => {
       pushToast({
         tone: "error",
-        title: "Preview failed",
-        body: err instanceof Error ? err.message : "Failed to preview import.",
+        title: "Falha na pré-visualização",
+        body: err instanceof Error ? err.message : "Falha ao pré-visualizar.",
       });
     },
   });
@@ -863,7 +863,7 @@ export function CompanyImport() {
       setSelectedCompanyId(importedCompany.id);
       pushToast({
         tone: "success",
-        title: "Import complete",
+        title: "Importação concluída",
         body: `${result.company.name}: ${result.agents.length} agent${result.agents.length === 1 ? "" : "s"} processed.`,
       });
       // Force a fresh dashboard load so newly imported agents are immediately visible.
@@ -872,8 +872,8 @@ export function CompanyImport() {
     onError: (err) => {
       pushToast({
         tone: "error",
-        title: "Import failed",
-        body: err instanceof Error ? err.message : "Failed to apply import.",
+        title: "Falha na importação",
+        body: err instanceof Error ? err.message : "Falha ao aplicar importação.",
       });
     },
   });
@@ -888,8 +888,8 @@ export function CompanyImport() {
     } catch (err) {
       pushToast({
         tone: "error",
-        title: "Package read failed",
-        body: err instanceof Error ? err.message : "Failed to read folder.",
+        title: "Falha na leitura do pacote",
+        body: err instanceof Error ? err.message : "Falha ao ler pasta.",
       });
     }
   }

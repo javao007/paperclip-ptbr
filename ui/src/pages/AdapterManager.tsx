@@ -569,9 +569,9 @@ export function AdapterManager() {
                   isToggling={isBuiltinOverride ? overrideMutation.isPending : toggleMutation.isPending}
                   isReloading={reloadMutation.isPending}
                   isReinstalling={reinstallMutation.isPending}
-                  toggleTitleDisabled={isBuiltinOverride ? "Pause external override" : undefined}
-                  toggleTitleEnabled={isBuiltinOverride ? "Resume external override" : undefined}
-                  disabledBadgeLabel={isBuiltinOverride ? "Override paused" : undefined}
+                  toggleTitleDisabled={isBuiltinOverride ? "Pausar substituição externa" : undefined}
+                  toggleTitleEnabled={isBuiltinOverride ? "Retomar substituição externa" : undefined}
+                  disabledBadgeLabel={isBuiltinOverride ? "Substituição pausada" : undefined}
                 />
               );
             })}

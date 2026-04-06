@@ -64,10 +64,10 @@ const defaultViewState: IssueViewState = {
 };
 
 const quickFilterPresets = [
-  { label: "All", statuses: [] as string[] },
-  { label: "Active", statuses: ["todo", "in_progress", "in_review", "blocked"] },
+  { label: "Todos", statuses: [] as string[] },
+  { label: "Ativos", statuses: ["todo", "in_progress", "in_review", "blocked"] },
   { label: "Backlog", statuses: ["backlog"] },
-  { label: "Done", statuses: ["done", "cancelled"] },
+  { label: "Concluídos", statuses: ["done", "cancelled"] },
 ];
 function getViewState(key: string): IssueViewState {
   try {
@@ -480,7 +480,7 @@ export function IssuesList({
                     >
                       <input
                         className="mb-1 w-full border-b border-border bg-transparent px-2 py-1.5 text-xs outline-none placeholder:text-muted-foreground/50"
-                        placeholder="Search assignees..."
+                        placeholder="Pesquisar responsáveis..."
                         value={assigneeSearch}
                         onChange={(e) => setAssigneeSearch(e.target.value)}
                         autoFocus

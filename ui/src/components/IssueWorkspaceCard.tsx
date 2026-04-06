@@ -152,7 +152,7 @@ function statusBadge(status: string) {
   };
   return (
     <span className={cn("text-[10px] px-1.5 py-0.5 rounded-full font-medium", colors[status] ?? colors.idle)}>
-      {status.replace(/_/g, " ")}
+      {translateStatus(status)}
     </span>
   );
 }

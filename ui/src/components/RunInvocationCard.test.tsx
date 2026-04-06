@@ -25,10 +25,10 @@ describe("RunInvocationCard", () => {
       </ThemeProvider>,
     );
 
-    expect(html).toContain("Invocation");
+    expect(html).toContain("Invocação");
     expect(html).toContain("Adapter:");
     expect(html).toContain("Working dir:");
-    expect(html).toContain("Details");
+    expect(html).toContain("Detalhes");
     expect(html).not.toContain("Command:");
     expect(html).not.toContain("Prompt is piped to claude via stdin.");
     expect(html).not.toContain("very long prompt body");

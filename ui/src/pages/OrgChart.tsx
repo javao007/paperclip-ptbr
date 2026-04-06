@@ -299,7 +299,7 @@ export function OrgChart() {
             }
             setZoom(newZoom);
           }}
-          aria-label="Zoom in"
+          aria-label="Aumentar zoom"
         >
           +
         </button>
@@ -316,7 +316,7 @@ export function OrgChart() {
             }
             setZoom(newZoom);
           }}
-          aria-label="Zoom out"
+          aria-label="Diminuir zoom"
         >
           &minus;
         </button>

@@ -240,7 +240,7 @@ export function RoutineRunVariablesDialog({
                   }))}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Choose a value" />
+                    <SelectValue placeholder="Escolha um valor" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="__unset__">No value</SelectItem>

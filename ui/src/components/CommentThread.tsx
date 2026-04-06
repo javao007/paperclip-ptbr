@@ -21,6 +21,7 @@ import { formatAssigneeUserLabel } from "../lib/assignees";
 import type { IssueTimelineAssignee, IssueTimelineEvent } from "../lib/issue-timeline-events";
 import { timeAgo } from "../lib/timeAgo";
 import { cn, formatDateTime } from "../lib/utils";
+import { translateStatus } from "../lib/translations";
 import { restoreSubmittedCommentDraft } from "../lib/comment-submit-draft";
 import { PluginSlotOutlet } from "@/plugins/slots";
 
@@ -128,7 +129,7 @@ function parseReassignment(target: string): CommentReassignment | null {
 
 function humanizeValue(value: string | null): string {
   if (!value) return "Nenhum";
-  return value.replace(/_/g, " ");
+  return translateStatus(value);
 }
 
 function formatTimelineAssigneeLabel(
@@ -169,12 +170,7 @@ function initialsForName(name: string) {
 }
 
 function formatRunStatusLabel(status: string) {
-  switch (status) {
-    case "timed_out":
-      return "timed out";
-    default:
-      return status.replace(/_/g, " ");
-  }
+  return translateStatus(status);
 }
 
 function runTimestamp(run: LinkedRunItem) {
