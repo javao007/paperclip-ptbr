@@ -2,6 +2,7 @@ import { Link } from "@/lib/router";
 import { Identity } from "./Identity";
 import { timeAgo } from "../lib/timeAgo";
 import { cn } from "../lib/utils";
+import { issueStatusLabels, priorityLabels } from "../lib/translations";
 import { deriveProjectUrlKey, type ActivityEvent, type Agent } from "@paperclipai/shared";
 
 const ACTION_VERBS: Record<string, string> = {
@@ -46,7 +47,7 @@ const ACTION_VERBS: Record<string, string> = {
 
 function humanizeValue(value: unknown): string {
   if (typeof value !== "string") return String(value ?? "nenhum");
-  return value.replace(/_/g, " ");
+  return issueStatusLabels[value] ?? priorityLabels[value] ?? value.replace(/_/g, " ");
 }
 
 function formatVerb(action: string, details?: Record<string, unknown> | null): string {

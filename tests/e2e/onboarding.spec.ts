@@ -24,8 +24,8 @@ test.describe("Onboarding wizard", () => {
   test("completes full wizard flow", async ({ page }) => {
     await page.goto("/");
 
-    const wizardHeading = page.locator("h3", { hasText: "Name your company" });
-    const newCompanyBtn = page.getByRole("button", { name: "New Company" });
+    const wizardHeading = page.locator("h3", { hasText: "Nomeie sua empresa" });
+    const newCompanyBtn = page.getByRole("button", { name: "Nova Empresa" });
 
     await expect(
       wizardHeading.or(newCompanyBtn)
@@ -44,7 +44,7 @@ test.describe("Onboarding wizard", () => {
     await nextButton.click();
 
     await expect(
-      page.locator("h3", { hasText: "Create your first agent" })
+      page.locator("h3", { hasText: "Crie seu primeiro agente" })
     ).toBeVisible({ timeout: 10_000 });
 
     const agentNameInput = page.locator('input[placeholder="CEO"]');
@@ -54,32 +54,32 @@ test.describe("Onboarding wizard", () => {
       page.locator("button", { hasText: "Claude Code" }).locator("..")
     ).toBeVisible();
 
-    await page.getByRole("button", { name: "More Agent Adapter Types" }).click();
+    await page.getByRole("button", { name: "Mais Tipos de Adaptador" }).click();
     await expect(page.getByRole("button", { name: "Process" })).toHaveCount(0);
 
-    await page.getByRole("button", { name: "Next" }).click();
+    await page.getByRole("button", { name: "Próximo" }).click();
 
     await expect(
-      page.locator("h3", { hasText: "Give it something to do" })
+      page.locator("h3", { hasText: "Dê algo para fazer" })
     ).toBeVisible({ timeout: 10_000 });
 
     const taskTitleInput = page.locator(
-      'input[placeholder="e.g. Research competitor pricing"]'
+      'input[placeholder="ex: Pesquisar preços dos concorrentes"]'
     );
     await taskTitleInput.clear();
     await taskTitleInput.fill(TASK_TITLE);
 
-    await page.getByRole("button", { name: "Next" }).click();
+    await page.getByRole("button", { name: "Próximo" }).click();
 
     await expect(
-      page.locator("h3", { hasText: "Ready to launch" })
+      page.locator("h3", { hasText: "Pronto para lançar" })
     ).toBeVisible({ timeout: 10_000 });
 
     await expect(page.locator("text=" + COMPANY_NAME)).toBeVisible();
     await expect(page.locator("text=" + AGENT_NAME)).toBeVisible();
     await expect(page.locator("text=" + TASK_TITLE)).toBeVisible();
 
-    await page.getByRole("button", { name: "Create & Open Issue" }).click();
+    await page.getByRole("button", { name: "Criar e Abrir Tarefa" }).click();
 
     await expect(page).toHaveURL(/\/issues\//, { timeout: 10_000 });
 
@@ -125,7 +125,7 @@ test.describe("Onboarding wizard", () => {
     expect(task).toBeTruthy();
     expect(task.assigneeAgentId).toBe(ceoAgent.id);
     expect(task.description).toContain(
-      "You are the CEO. You set the direction for the company."
+      "Você é o CEO. Você define a direção da empresa."
     );
     expect(task.description).not.toContain("github.com/paperclipai/companies");
 

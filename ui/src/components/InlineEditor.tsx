@@ -231,12 +231,12 @@ export function InlineEditor({
             )}
           >
             {autosaveState === "saving"
-              ? "Autosaving..."
+              ? "Salvando..."
               : autosaveState === "saved"
-                ? "Saved"
+                ? "Salvo"
                 : autosaveState === "error"
-                  ? "Could not save"
-                  : "Idle"}
+                  ? "Erro ao salvar"
+                  : "Inativo"}
           </span>
         </div>
       </div>

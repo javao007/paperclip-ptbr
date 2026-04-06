@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { pluginRecordStatusLabels, t } from "@/lib/translations";
 import {
   Dialog,
   DialogContent,
@@ -252,7 +253,7 @@ export function PluginManager() {
                             variant={installedPlugin.status === "ready" ? "default" : "secondary"}
                             className={installedPlugin.status === "ready" ? "bg-green-600 hover:bg-green-700" : ""}
                           >
-                            {installedPlugin.status}
+                            {t(installedPlugin.status, pluginRecordStatusLabels)}
                           </Badge>
                         ) : (
                           <Badge variant="secondary">Não instalado</Badge>
@@ -388,7 +389,7 @@ export function PluginManager() {
                             plugin.status === "ready" ? "bg-green-600 hover:bg-green-700" : ""
                           )}
                         >
-                          {plugin.status}
+                          {t(plugin.status, pluginRecordStatusLabels)}
                         </Badge>
                         <Button
                           variant="outline"

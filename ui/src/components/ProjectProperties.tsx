@@ -3,6 +3,7 @@ import { Link } from "@/lib/router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Project } from "@paperclipai/shared";
 import { StatusBadge } from "./StatusBadge";
+import { runtimeStatusLabels, t } from "../lib/translations";
 import { cn, formatDate } from "../lib/utils";
 import { goalsApi } from "../api/goals";
 import { instanceSettingsApi } from "../api/instanceSettings";
@@ -744,7 +745,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                                 : "bg-muted text-muted-foreground",
                           )}
                         >
-                          {service.status}
+                          {t(service.status, runtimeStatusLabels)}
                         </span>
                       </div>
                       <div className="text-[11px] text-muted-foreground">
@@ -907,11 +908,11 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                     <div className="flex items-center justify-between gap-3">
                       <div className="space-y-0.5">
                         <div className="flex items-center gap-2 text-sm">
-                          <span>New issues default to isolated checkout</span>
+                          <span>Novas tarefas usam checkout isolado por padrão</span>
                           <SaveIndicator state={fieldState("execution_workspace_default_mode")} />
                         </div>
                         <div className="text-[11px] text-muted-foreground">
-                          If disabled, new issues stay on the project's primary checkout unless someone opts in.
+                          Se desativado, novas tarefas permanecem no checkout principal do projeto, a menos que alguém opte por isolamento.
                         </div>
                       </div>
                       <ToggleSwitch

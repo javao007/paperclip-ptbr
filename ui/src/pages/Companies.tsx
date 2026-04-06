@@ -176,7 +176,7 @@ export function Companies() {
                               : "bg-muted text-muted-foreground"
                         }`}
                       >
-                        {company.status}
+                        {company.status === "active" ? "Ativo" : company.status === "paused" ? "Pausado" : company.status === "archived" ? "Arquivado" : company.status}
                       </span>
                       <Button
                         variant="ghost"

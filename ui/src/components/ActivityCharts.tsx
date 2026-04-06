@@ -1,4 +1,5 @@
 import type { HeartbeatRun } from "@paperclipai/shared";
+import { priorityLabels, issueStatusLabels, t } from "../lib/translations";
 
 /* ---- Utilities ---- */
 
@@ -152,7 +153,7 @@ export function PriorityChart({ issues }: { issues: { priority: string; createdA
         })}
       </div>
       <DateLabels days={days} />
-      <ChartLegend items={priorityOrder.map(p => ({ color: priorityColors[p], label: p.charAt(0).toUpperCase() + p.slice(1) }))} />
+      <ChartLegend items={priorityOrder.map(p => ({ color: priorityColors[p], label: t(p, priorityLabels) }))} />
     </div>
   );
 }
@@ -167,15 +168,7 @@ const statusColors: Record<string, string> = {
   backlog: "#64748b",
 };
 
-const statusLabels: Record<string, string> = {
-  todo: "A Fazer",
-  in_progress: "Em Progresso",
-  in_review: "Em Revisão",
-  done: "Concluído",
-  blocked: "Bloqueado",
-  cancelled: "Cancelado",
-  backlog: "Backlog",
-};
+const statusLabels = issueStatusLabels;
 
 export function IssueStatusChart({ issues }: { issues: { status: string; createdAt: Date }[] }) {
   const days = getLast14Days();

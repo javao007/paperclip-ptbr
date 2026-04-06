@@ -11,6 +11,7 @@ import { useBreadcrumbs } from "../context/BreadcrumbContext";
 import { useCompany } from "../context/CompanyContext";
 import { queryKeys } from "../lib/queryKeys";
 import { projectRouteRef, projectWorkspaceUrl } from "../lib/utils";
+import { runtimeStatusLabels, runtimeHealthLabels } from "../lib/translations";
 
 type WorkspaceFormState = {
   name: string;
@@ -656,7 +657,7 @@ export function ProjectWorkspaceDetail() {
                         </div>
                       </div>
                       <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground sm:text-right">
-                        {service.status} · {service.healthStatus}
+                        {runtimeStatusLabels[service.status] ?? service.status} · {runtimeHealthLabels[service.healthStatus] ?? service.healthStatus}
                       </div>
                     </div>
                   </div>

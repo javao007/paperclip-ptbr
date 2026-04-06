@@ -7,6 +7,7 @@ import { Link, Navigate, useParams } from "@/lib/router";
 import { PluginSlotMount, usePluginSlots } from "@/plugins/slots";
 import { pluginsApi } from "@/api/plugins";
 import { queryKeys } from "@/lib/queryKeys";
+import { pluginRecordStatusLabels, pluginJobStatusLabels, runtimeHealthLabels, runStatusLabels, t } from "@/lib/translations";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -270,7 +271,7 @@ export function PluginSettings() {
                             <div className="flex justify-between">
                               <span className="text-muted-foreground">Status</span>
                               <Badge variant={dashboardData.worker.status === "running" ? "default" : "secondary"}>
-                                {dashboardData.worker.status}
+                                {t(dashboardData.worker.status, runStatusLabels)}
                               </Badge>
                             </div>
                             <div className="flex justify-between">
@@ -441,7 +442,7 @@ export function PluginSettings() {
                       <div className="flex items-center justify-between">
                         <span className="text-muted-foreground">Geral</span>
                         <Badge variant={healthData.healthy ? "default" : "destructive"}>
-                          {healthData.status}
+                          {t(healthData.status, runtimeHealthLabels)}
                         </Badge>
                       </div>
 

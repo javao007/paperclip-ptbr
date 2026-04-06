@@ -13,6 +13,7 @@ import { projectsApi } from "../api/projects";
 import { useBreadcrumbs } from "../context/BreadcrumbContext";
 import { useCompany } from "../context/CompanyContext";
 import { queryKeys } from "../lib/queryKeys";
+import { runtimeStatusLabels } from "../lib/translations";
 import { cn, formatDateTime, issueUrl, projectRouteRef, projectWorkspaceUrl } from "../lib/utils";
 
 type WorkspaceFormState = {
@@ -389,7 +390,7 @@ export function ExecutionWorkspaceDetail() {
           <StatusPill>{workspace.mode}</StatusPill>
           <StatusPill>{workspace.providerType}</StatusPill>
           <StatusPill className={workspace.status === "active" ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300" : undefined}>
-            {workspace.status}
+            {workspace.status === "active" ? "Ativo" : workspace.status === "archived" ? "Arquivado" : workspace.status}
           </StatusPill>
         </div>
 
@@ -728,7 +729,7 @@ export function ExecutionWorkspaceDetail() {
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <div className="space-y-1">
                           <div className="text-sm font-medium">{service.serviceName}</div>
-                          <div className="text-xs text-muted-foreground">{service.status} · {service.lifecycle}</div>
+                          <div className="text-xs text-muted-foreground">{runtimeStatusLabels[service.status] ?? service.status} · {service.lifecycle}</div>
                           <div className="space-y-1 text-xs text-muted-foreground">
                             {service.url ? (
                               <a href={service.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">
