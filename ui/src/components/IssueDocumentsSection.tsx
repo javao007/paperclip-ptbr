@@ -696,8 +696,8 @@ export function IssueDocumentsSection({
             {extraActions}
             <Button variant="outline" size="sm" onClick={beginNewDocument} className="shrink-0">
               <Plus className="mr-1.5 h-3.5 w-3.5" />
-              <span className="hidden sm:inline">New document</span>
-              <span className="sm:hidden">New</span>
+              <span className="hidden sm:inline">Novo documento</span>
+              <span className="sm:hidden">Novo</span>
             </Button>
           </div>
         </div>
