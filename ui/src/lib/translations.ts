@@ -166,6 +166,17 @@ export const routineExecutionMessages: Record<string, string> = {
   "Routine execution": "Execução de rotina",
 };
 
+// Status de Projetos
+export const projectStatusLabels: Record<string, string> = {
+  planned: "Planejado",
+  in_progress: "Em Andamento",
+  completed: "Concluído",
+  cancelled: "Cancelado",
+  archived: "Arquivado",
+  active: "Ativo",
+  paused: "Pausado",
+};
+
 // Generic translate function
 export function t(value: string, map: Record<string, string>): string {
   return map[value] ?? value;
@@ -181,6 +192,7 @@ export function translateStatus(status: string): string {
     approvalStatusLabels[status] ??
     routineRunStatusLabels[status] ??
     goalStatusLabels[status] ??
+    projectStatusLabels[status] ??
     status
   );
 }
